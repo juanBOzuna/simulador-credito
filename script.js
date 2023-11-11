@@ -1,6 +1,8 @@
 function openNumericKeyboard(inputElement) {
-
+    inputElement.setAttribute("type", "tel");
 }
+
+
 
 const inputMoneda = document.querySelector("#monto");
 const inputCuotas = document.querySelector("#cuotas");
