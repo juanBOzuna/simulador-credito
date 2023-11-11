@@ -141,6 +141,7 @@ document.getElementById("form_calculate").addEventListener("submit", function (e
     if (calcActual && calcActual.cuotas) {
         // Iterar sobre las cuotas y agregarlas a la tabla
         resultadosTbody.innerHTML="";
+        var totalinteres=0;
         calcActual.cuotas.forEach(function (cuota) {
             var nuevaFila = document.createElement("tr");
             nuevaFila.innerHTML = `<td>${(cuota["#"])+1}</td>
@@ -149,7 +150,12 @@ document.getElementById("form_calculate").addEventListener("submit", function (e
                                   <td  >$${formatThisResult(cuota.total)}</td>
                                   <td style="color:green; font-weight: bold;" >$${formatThisResult(cuota.restante)}</td>`;
             resultadosTbody.appendChild(nuevaFila);
+            totalinteres+= cuota.interes;
         });
+ 
+        var nuevaFila = document.createElement("tr");
+        nuevaFila.innerHTML = `<td colspan="5" style="font-weight: 500;" >Total interes pagado: <span style="color:red;" >$${formatThisResult(totalinteres)} </span> </td>`;
+        resultadosTbody.appendChild(nuevaFila);
     }
 });
 
