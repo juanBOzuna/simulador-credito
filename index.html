@@ -26,13 +26,13 @@
         <h1 class="display-4 mt-4">Simulador</h1>
     </header>
 
-    <div class="container mb-5 mt-3">
-        <form action="#" id="form_calculate">
+    <div class="container mb-4 mt-3">
+        <form action="#" id="form_calculate" style="padding: 0px;">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text">$</span>
                 </div>
-                <input class="form-control" id="monto" placeholder="Ingrese el monto"
+                <input class="form-control" id="monto" placeholder="Ingrese el monto" value="10000"
                     onclick="openNumericKeyboard(this)" onfocus="openNumericKeyboard(this)" required>
                 <div class="input-group-append">
                     <span class="input-group-text">.00</span>
@@ -42,12 +42,12 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="cuotas" class="col-form-label" style="font-weight: 600;">Cuotas</label>
-                    <input class="form-control" id="cuotas" placeholder="Ingrese el número de cuotas"
+                    <input class="form-control" id="cuotas" placeholder="Ingrese el número de cuotas" value="4"
                         onclick="openNumericKeyboard(this)" onfocus="openNumericKeyboard(this)" required>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="interes" class="col-form-label" style="font-weight: 600;">Interes</label>
-                    <input class="form-control" id="interes" placeholder="Ingrese el interés"
+                    <input class="form-control" id="interes" placeholder="Ingrese el interés" value="10"
                         onclick="openNumericKeyboard(this)" onfocus="openNumericKeyboard(this)" required>
                 </div>
             </div>
@@ -56,21 +56,65 @@
                 <button type="submit" class="btn btn-primary btn-lg btn-block">Simular</button>
             </div>
         </form>
+
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-md-6 mt-5" style="margin-top: 5px !important;">
+                <button type="submit" class="btn btn-success btn-lg btn-block" data-bs-toggle="modal"
+                    data-bs-target="#myModal" style="display: none;" id="btn-abonar">Cuota Personalizada</button>
+            </div>
+            <div class="col-md-6 mt-5"style="margin-top: 5px !important;">
+                <button type="submit"  class="btn btn-success btn-lg btn-block" data-bs-toggle="modal"
+                    data-bs-target="#myModal" style="display: none;" id="btn-acomodar">Igualar Cuotas</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" tabindex="-1" role="dialog" id="myModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Formulario de Pagos</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Formulario -->
+                    <form action="#" id="form_abonar">
+                        <div class="mb-3">
+                            <label for="cuotas" class="form-label">Cuota:</label>
+                            <select class="form-select" id="cuotasSelect" name="cuotas" style="width: 100%;" required>
+                                <!-- <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option> -->
+                                <!-- Agrega más opciones según sea necesario -->
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="abono" class="form-label">Abono:</label>
+                            <input type="text" class="form-control" id="abono" name="abono" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="submit_abonar" >Enviar</button>
+                    </form>
+                    <!-- Fin del formulario -->
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="container">
         <div class="table-responsive-sm">
             <table class="table table-responsive-sm table-success table-striped">
                 <thead>
-                    <tr style="font-size: 15px;" >
+                    <tr style="font-size: 15px;">
                         <th>Cuota #</th>
                         <th>Valor Neto</th>
                         <th>Interes</th>
                         <th>Cuota Total</th>
+                        <th>Cuota P.</th>
                         <th>Capital restante</th>
                     </tr>
                 </thead>
-                <tbody id="resultados"   >
+                <tbody id="resultados">
 
                     <!-- <tr>
                         <td  ></td>
