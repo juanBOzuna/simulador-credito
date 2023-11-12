@@ -203,11 +203,11 @@ document.getElementById("form_abonar").addEventListener("submit", function (even
     // }
     // console.log((cuota ) , calcActual['cuotas'].length)
 
-    if (  (cuota) < calcActual['cuotas'].length) {
+    if ((cuota) < calcActual['cuotas'].length) {
         if (Abono > maxAbono) {
-            alert("El abono no puede ser mayor a ", maxAbono)
+            alert("El abono no puede ser mayor a " + maxAbono)
         } else if (Abono < minAbono) {
-            alert("El abono no puede ser menor a ", minAbono)
+            alert("El abono no puede ser menor a " + minAbono)
         } else {
 
 
@@ -321,16 +321,16 @@ function validarInputAbono(event) {
 
 
         if (isValidFloat(unformattedValue)) {
-            clearTimeout(timeoutId);
-            timeoutId = setTimeout(function () {
-                var valorIngresado = parseFloat(event.target.value.replaceAll(",", ""));
+            // clearTimeout(timeoutId);
+            // timeoutId = setTimeout(function () {
+            //     var valorIngresado = parseFloat(event.target.value.replaceAll(",", ""));
 
-                if (valorIngresado > parseFloat(JSON.parse(localStorage.getItem("maxAbono")))) {
-                    inputAbono.value = parseFloat(JSON.parse(localStorage.getItem("maxAbono")));
-                } else if (valorIngresado < parseFloat(JSON.parse(localStorage.getItem("minAbono")))) {
-                    inputAbono.value = parseFloat(JSON.parse(localStorage.getItem("minAbono")));
-                }
-            }, 1500)
+            //     if (valorIngresado > parseFloat(JSON.parse(localStorage.getItem("maxAbono")))) {
+            //         inputAbono.value = parseFloat(JSON.parse(localStorage.getItem("maxAbono")));
+            //     } else if (valorIngresado < parseFloat(JSON.parse(localStorage.getItem("minAbono")))) {
+            //         inputAbono.value = parseFloat(JSON.parse(localStorage.getItem("minAbono")));
+            //     }
+            // }, 1500)
         } else {
             inputAbono.value = "";
         }
